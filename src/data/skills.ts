@@ -19,7 +19,7 @@ export const skills: SkillCategory[] = [
   },
   {
     label: "Data & Databases",
-    items: ["PostgreSQL", "MySQL", "Vector Databases", "Spark", "Hadoop"],
+    items: ["PostgreSQL", "MySQL", "Vector Databases", "Spark", "Hadoop", "kafka"],
   },
   {
     label: "Cloud & DevOps",

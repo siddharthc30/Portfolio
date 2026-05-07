@@ -30,11 +30,14 @@ export function About() {
 
       <div className="flex flex-col gap-4">
         <p className="text-sm text-foreground leading-relaxed text-justify">
-        I build backend systems and applied AI — and most of the time, the most interesting work happens where those two things meet. 
-        I've spent the last few years working on everything from securing healthcare APIs and optimizing backend services to evaluating 
-        large language models at scale and building computer vision pipelines. What drives me isn't any single technology, 
-        but the process of finding a solution to a messy real-world problem. I'm at my best when 
-        I'm both writing the system and understanding why it's built the way it is.
+        The hardest part of building AI products isn't the model — it's everything around it. The APIs, the latency, 
+        the failure modes, the infrastructure that keeps it running at 2am.
+        That's the part I gravitate toward. Over the last few years I've built and secured production healthcare APIs, 
+        designed distributed evaluation pipelines for large-scale LLM testing, and shipped computer vision systems from 
+        research to live inference. I care as much about how a system holds up under load as I do about the model powering it.
+        Right now I'm focused on the intersection of LLM infrastructure and backend engineering — RAG pipelines, agentic systems, 
+        and the kind of production AI work that goes well beyond a Jupyter notebook. If you're building something hard in that space, 
+        I'd like to hear about it.
         </p>
         
 

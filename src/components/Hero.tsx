@@ -16,17 +16,17 @@ export function Hero() {
           className="text-base sm:text-lg font-normal text-muted
                      animate-fade-up [animation-fill-mode:both] [animation-delay:130ms]"
         >
-         Backend & Applied AI Engineer | Building and Learning how modern AI systems work
+         Backend & Applied AI Engineer | Building production AI systems at the intersection of LLMs and backend engineering
         </p>
 
         {/* Short bio */}
-        <p
+        {/* <p
           className="text-sm sm:text-base text-muted leading-relaxed
                      animate-fade-up [animation-fill-mode:both] [animation-delay:260ms]"
         >
-          Recent MS CS Graduate | AI Systems & LLM Optimization |
+        MS CS Graduate @ UB | AI Systems & LLM Optimization |
           Building scalable production systems and energy-efficient AI solutions
-        </p>
+        </p> */}
 
       </div>
     </section>

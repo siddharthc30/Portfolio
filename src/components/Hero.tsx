@@ -16,7 +16,7 @@ export function Hero() {
           className="text-base sm:text-lg font-normal text-muted
                      animate-fade-up [animation-fill-mode:both] [animation-delay:130ms]"
         >
-         Backend & Applied AI Engineer | Building and Learning how mordern AI systems work
+         Backend & Applied AI Engineer | Building and Learning how modern AI systems work
         </p>
 
         {/* Short bio */}

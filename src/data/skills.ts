@@ -10,7 +10,7 @@ export const skills: SkillCategory[] = [
   },
   {
     label: "AI & ML",
-    items: ["Pytorch", "Tensorflow", "Hugging Face", "LangChain", "LangSmith", "LangGraph", "OpenAI API", "Computer vision", "RAG" ]
+    items: ["Pytorch", "Tensorflow", "Hugging Face", "LangChain", "LangSmith", "LangGraph", "RAG", "OpenAI API", "Anthropic API", "Computer Vision" ]
     
   },
   {

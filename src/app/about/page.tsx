@@ -26,9 +26,9 @@ export default function AboutPage() {
           <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-foreground mb-4">
             About me
           </h1>
-          <p className="text-base text-muted leading-relaxed">
+          {/* <p className="text-base text-muted leading-relaxed">
             A bit more than the homepage summary.
-          </p>
+          </p> */}
         </section>
 
         {/* ── Background ── */}

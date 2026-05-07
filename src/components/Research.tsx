@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { publications } from "@/data/publications";
 
 export function Research() {
@@ -11,12 +10,6 @@ export function Research() {
             Research
           </h2>
         </div>
-        <Link
-          href="/research"
-          className="text-xs text-muted hover:text-foreground transition-colors duration-150"
-        >
-          More Details →
-        </Link>
       </div>
 
       <div className="flex flex-col gap-3">

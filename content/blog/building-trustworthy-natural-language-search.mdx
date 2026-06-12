@@ -1,0 +1,54 @@
+---
+title: "Building a Trustworthy Natural-Language Search System"
+date: "2026-06-12"
+description: "How I let users ask plain-English questions of a hotel database without letting the LLM confidently lie to them."
+tags: ["AI", "LLM", "Python", "Text-to-SQL"]
+---
+
+I built a system where you ask a hotel database questions in plain English — "top-rated hotels in Rome with a pool," "average price in Paris" — and get a grounded answer, short insights, and matching hotels on a map. It runs over ~1,000 European hotels with ~363k reviews and precomputed sentiment scores.
+
+The demo is an afternoon's work. The actual project was trust.
+
+<div className="video-embed">
+  <iframe
+    src="https://www.loom.com/embed/26db686354084793a3ac6f4212daa273"
+    frameBorder="0"
+    allow="fullscreen"
+    allowFullScreen
+  />
+</div>
+
+## The real risk isn't a crash
+
+Once you let users ask *arbitrary* questions, the dangerous failure mode isn't an error — it's valid SQL that returns a confidently wrong answer the user can't catch and might act on. So I designed the whole system around one principle: constrain the LLM to only what it does reliably, and keep everything else deterministic.
+
+## A spectrum of trust
+
+A router sends each question to the *most-bounded path that fits*, falling back only when it has to:
+
+- **Parameterized search** — the model just fills a form (location, rating, amenities). My code writes the query.
+- **Semantic query-spec** — the model picks metrics and dimensions from a predefined menu; a deterministic compiler turns the spec into SQL.
+- **Guarded text-to-SQL** — the model authors a query only as a last resort, used rarely.
+
+The insight: the bounded paths aren't optimizations, they're *safety floors*. User and model values only ever land as allowlist keys or `?` placeholders — never templated into a SQL string.
+
+## Never trust the SQL string
+
+For the fallback tier, generated SQL is never run as-is. I parse it with `sqlglot`, inspect the AST (single read-only `SELECT`, allowlisted identifiers, write/DDL blocked), and re-render from the validated tree before executing on a read-only connection.
+
+```python
+tree = sqlglot.parse(sql)          # one statement only
+assert is_read_only_select(tree)    # no INSERT/UPDATE/DROP/PRAGMA/ATTACH
+assert identifiers_allowed(tree)     # only real tables & columns
+safe_sql = tree[0].sql(dialect="sqlite")  # execute the re-rendered AST
+```
+
+## What I'd reach for differently
+
+I deliberately skipped LangChain — the pipeline is small enough that frameworks would hide the mechanics I wanted to learn. I also learned that sentiment questions ("good pools") are *aggregation* problems, not retrieval problems, so precomputed scores beat RAG. The current FTS5 search has a vocabulary gap ("comfortable beds" won't match "soft mattress"); vector search is the v2 fix.
+
+## Stack
+
+Plain Python, FastAPI on Render, Streamlit frontend, Gemini for routing and narration, Langfuse for observability, and an eval suite for narration faithfulness. The throughline: the LLM only routes and narrates; execution stays deterministic and auditable.
+
+*More to come — I'll expand the architecture and safety sections soon.*

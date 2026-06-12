@@ -24,7 +24,7 @@ export default function ResumePage() {
         {/* ── PDF viewer ── */}
         <div className="py-6">
           <iframe
-            src="/Siddharth_SWE_resume.pdf"
+            src="/Base_AI_Siddharth_Resume.pdf"
             className="w-full rounded-lg border border-border"
             style={{ height: "calc(100vh - 10rem)" }}
             title="Siddharth's Resume"

@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <main className="pt-14">
-      <div className="mx-auto w-full max-w-[730px] px-6 sm:px-8">
+      <div className="mx-auto w-full max-w-[850px] px-6 sm:px-8">
 
         {/* Back link */}
         <div className="pt-10 pb-2">

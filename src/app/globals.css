@@ -119,6 +119,26 @@ p {
   margin: 1.5rem 0;
 }
 
+/* Video embeds (e.g. Loom) */
+.prose .video-embed {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 0;
+  padding-bottom: min(56.25%, 450px);
+  margin: 1.5rem auto;
+}
+
+.prose .video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+
 /* Table */
 .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.875rem; }
 .prose th, .prose td { padding: 0.5rem 0.75rem; border: 1px solid var(--border); text-align: left; }
